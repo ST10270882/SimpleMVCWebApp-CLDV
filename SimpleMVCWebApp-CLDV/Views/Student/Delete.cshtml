@@ -1,0 +1,27 @@
+﻿@model SimpleMVCWebApp_CLDV.Models.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<h2>Delete Student</h2>
+
+<p>Are you sure you want to delete the following student?</p>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Name:</dt>
+        <dd>@Model.Name</dd>
+        <dt>Age:</dt>
+        <dd>@Model.Age</dd>
+        <dt>Grade:</dt>
+        <dd>@Model.Grade</dd>
+    </dl>
+</div>
+
+@* Simple delete button triggering form submission *@
+<form asp-action="Delete" method="post">
+    @Html.HiddenFor(model => model.Id)
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-default">Back to List</a>
+</form>

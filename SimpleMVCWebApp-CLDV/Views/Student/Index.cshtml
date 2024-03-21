@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model IEnumerable<SimpleMVCWebApp_CLDV.Models.Student>
+<p>Click here to play calm music</p>
+<audio controls>
+    <source src="@Url.Content("~/Music/Where are you nasheed.mp3")" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<h2>Student List</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<h2>Audio Player</h2>
+
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Grade</th>
+    </tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+            <td>@student.Name</td>
+            <td>@student.Age</td>
+            <td>@student.Grade</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = student.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = student.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure you want to delete this student?');" })
+            </td>
+        </tr>
+    }
+</table>
